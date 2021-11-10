@@ -35,4 +35,4 @@ spec:
         - containerPort: 2368
         env:
         - name: url
-          value: http://gethuravi-blog.com
+          value: http://my-blog.com
