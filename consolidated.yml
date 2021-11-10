@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - name: blog
-        image: gethuacrghost.azurecr.io/ghost:v1
+        image: gethuacrghost.azurecr.io/gethuravighostapp:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 2368
