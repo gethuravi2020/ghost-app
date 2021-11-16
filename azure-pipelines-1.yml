@@ -1,0 +1,24 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'Visual Studio Enterprise Subscription (69f26762-afa0-46b5-8311-4fbdf35b3060)'
+    subscriptionId: '69f26762-afa0-46b5-8311-4fbdf35b3060'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'Gethu-RG'
+    location: 'East US'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://raw.githubusercontent.com/gethuravi2020/ghost-app/main/infra/AKS/azuredeploy.json'
+    csmParametersFileLink: 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.kubernetes/aks/azuredeploy.parameters.json'
+    deploymentMode: 'Incremental'
