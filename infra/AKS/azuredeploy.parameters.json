@@ -3,16 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "clusterName": {
-      "value": "GEN-UNIQUE"
+      "value": "Gethu-Ravi-AKS"
     },
     "dnsPrefix": {
-      "value": "GEN-UNIQUE"
-    },
-    "linuxAdminUsername": {
-      "value": "GEN-UNIQUE"
-    },
-    "sshRSAPublicKey": {
-      "value": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEApjltk13iOg+uulFtjEp/83liMcBHr4aczY7O3MUFVcMVULcXk6OSYic4ikfxgh4RKeEy0DFdlpuOQprxXkyEp0D5mULp0EjmeVbtygNdhCmMUhEWvjJObC52YEmSyWKw5FaBnE1A9w1QLJFCxPbdHfwiuDEiIJtXHIF08/dm1aGTqwO+gQuH1ZPxTMKo5C/HKlg1v+I/Ea1/Ws9PYi82KWZNXqLaF5WW5c75cdYtCpj2Nvx8Hp8tOeLja3KaUhjPQG+QKpeCQ0W5KA1msRHYweqLmcXeU284xQFoATc3NLlacc0zBm5qblhkqSST6WdCLIBYl336fbq+LgLSJPX9Rw== rsa-key-20211116"
+      "value": "Gethu-Ravi-AKS-Demo"
     }
   }
 }
