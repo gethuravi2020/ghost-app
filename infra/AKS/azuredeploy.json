@@ -328,9 +328,9 @@
         }
     ],
     "outputs": {
-        "controlPlaneFQDN": {
+        "AKS-Name": {
             "type": "string",
-            "value": "[reference(concat('Microsoft.ContainerService/managedClusters/', parameters('resourceName'))).fqdn]"
+            "value": "[reference(resourceId('Microsoft.ContainerService/managedClusters/', parameters('resourceName'))).name]"
         }
     }
 }
