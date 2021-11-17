@@ -15,7 +15,7 @@ steps:
     azureResourceManagerConnection: 'Visual Studio Enterprise Subscription (69f26762-afa0-46b5-8311-4fbdf35b3060)'
     subscriptionId: '69f26762-afa0-46b5-8311-4fbdf35b3060'
     action: 'Create Or Update Resource Group'
-    resourceGroupName: 'Gethu-RG'
+    resourceGroupName: 'Gethu-AKS-RG'
     location: 'East US'
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/gethuravi2020/ghost-app/main/infra/AKS/azuredeploy.json'
