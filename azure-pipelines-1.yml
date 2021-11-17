@@ -19,6 +19,6 @@ steps:
     location: 'East US'
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/gethuravi2020/ghost-app/main/infra/AKS/azuredeploy.json'
-    csmParametersFileLink: 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.kubernetes/aks/azuredeploy.parameters.json'
+    csmParametersFileLink: 'https://raw.githubusercontent.com/gethuravi2020/ghost-app/main/infra/AKS/azuredeploy.parameters.json'
     deploymentMode: 'Incremental'
     deploymentOutputs: aks_arm
