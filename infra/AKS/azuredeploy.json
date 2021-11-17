@@ -125,25 +125,6 @@
             "metadata": {
                 "description": "Select the SKU for your workspace."
             }
-        },
-        "acrName": {
-            "type": "string",
-            "metadata": {
-                "description": "Specify the name of the Azure Container Registry."
-            }
-        },
-        "acrResourceGroup": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the resource group the container registry is associated with."
-            }
-        },
-        "guidValue": {
-            "type": "string",
-            "metadata": {
-                "description": "The unique id used in the role assignment of the kubernetes service to the container registry service. It is recommended to use the default value."
-            },
-            "defaultValue": "[newGuid()]"
         }
     },
     "resources": [
@@ -205,7 +186,7 @@
         },
         {
             "type": "Microsoft.Resources/deployments",
-            "name": "SolutionDeployment-20211116234022",
+            "name": "SolutionDeployment-20211117183033",
             "apiVersion": "2017-05-10",
             "resourceGroup": "[split(parameters('omsWorkspaceId'),'/')[4]]",
             "subscriptionId": "[split(parameters('omsWorkspaceId'),'/')[2]]",
@@ -238,68 +219,10 @@
             "dependsOn": []
         },
         {
-            "name": "ConnectAKStoACR-b7a60144-4e5d-44d6-9eb9-8d77a4bdf042",
             "type": "Microsoft.Resources/deployments",
+            "name": "ClusterMonitoringMetricPulisherRoleAssignmentDepl-20211117183033",
             "apiVersion": "2017-05-10",
-            "resourceGroup": "[parameters('acrResourceGroup')]",
-            "dependsOn": [
-                "[concat('Microsoft.ContainerService/managedClusters/', parameters('resourceName'))]",
-                "[concat('Microsoft.Resources/deployments/', 'AcrDeployment-b7a60144-4e5d-44d6-9eb9-8d77a4bdf043')]"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "resources": [
-                        {
-                            "apiVersion": "2018-09-01-preview",
-                            "type": "Microsoft.ContainerRegistry/registries/providers/roleAssignments",
-                            "name": "[concat(parameters('acrName'), '/Microsoft.Authorization/', parameters('guidValue'))]",
-                            "properties": {
-                                "principalId": "[reference(parameters('resourceName'), '2021-02-01').identityProfile.kubeletidentity.objectId]",
-                                "principalType": "ServicePrincipal",
-                                "roleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
-                                "scope": "[resourceId(parameters('acrResourceGroup'),'Microsoft.ContainerRegistry/registries/', parameters('acrName'))]"
-                            }
-                        }
-                    ]
-                }
-            }
-        },
-        {
-            "name": "AcrDeployment-b7a60144-4e5d-44d6-9eb9-8d77a4bdf043",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2017-05-10",
-            "subscriptionId": "69f26762-afa0-46b5-8311-4fbdf35b3060",
-            "resourceGroup": "Gethu-RG",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "resources": [
-                        {
-                            "type": "Microsoft.ContainerRegistry/registries",
-                            "apiVersion": "2019-05-01",
-                            "name": "gethuacr",
-                            "location": "eastus",
-                            "sku": {
-                                "name": "Standard"
-                            },
-                            "properties": {
-                                "adminUserEnabled": false
-                            }
-                        }
-                    ]
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "name": "ClusterMonitoringMetricPulisherRoleAssignmentDepl-20211116234022",
-            "apiVersion": "2017-05-10",
-            "resourceGroup": "Gethu-RG",
+            "resourceGroup": "Gethu-AKS-RG",
             "subscriptionId": "69f26762-afa0-46b5-8311-4fbdf35b3060",
             "properties": {
                 "mode": "Incremental",
@@ -312,25 +235,25 @@
                         {
                             "type": "Microsoft.ContainerService/managedClusters/providers/roleAssignments",
                             "apiVersion": "2018-01-01-preview",
-                            "name": "gethu-ravi-aks/Microsoft.Authorization/8337da14-ae99-43e3-a86f-3d24c7db11b3",
+                            "name": "gethuravi-aks01/Microsoft.Authorization/04574220-0b0d-43b5-9568-517d01db7613",
                             "properties": {
                                 "roleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '3913510d-42f4-4e42-8a64-420c390055eb')]",
                                 "principalId": "[reference(parameters('resourceName')).addonProfiles.omsAgent.identity.objectId]",
-                                "scope": "/subscriptions/69f26762-afa0-46b5-8311-4fbdf35b3060/resourceGroups/Gethu-RG/providers/Microsoft.ContainerService/managedClusters/gethu-ravi-aks"
+                                "scope": "/subscriptions/69f26762-afa0-46b5-8311-4fbdf35b3060/resourceGroups/Gethu-AKS-RG/providers/Microsoft.ContainerService/managedClusters/gethuravi-aks01"
                             }
                         }
                     ]
                 }
             },
             "dependsOn": [
-                "/subscriptions/69f26762-afa0-46b5-8311-4fbdf35b3060/resourceGroups/Gethu-RG/providers/Microsoft.ContainerService/managedClusters/gethu-ravi-aks"
+                "/subscriptions/69f26762-afa0-46b5-8311-4fbdf35b3060/resourceGroups/Gethu-AKS-RG/providers/Microsoft.ContainerService/managedClusters/gethuravi-aks01"
             ]
         }
     ],
     "outputs": {
-        "AKS-Name": {
+        "AKS-NAME": {
             "type": "string",
-            "value": "[reference(resourceId('Microsoft.ContainerService/managedClusters/', parameters('resourceName'))).name]"
+            "value": "[reference(concat('Microsoft.ContainerService/managedClusters/', parameters('resourceName'))).name]"
         }
     }
 }
