@@ -22,3 +22,5 @@ steps:
     csmParametersFileLink: 'https://raw.githubusercontent.com/gethuravi2020/ghost-app/main/infra/AKS/azuredeploy.parameters.json'
     deploymentMode: 'Incremental'
     deploymentOutputs: aks_arm
+- powershell: |
+    Write-Host "Output of the AKS Deployment is : $(aks_arm)"
