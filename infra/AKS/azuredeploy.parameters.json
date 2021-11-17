@@ -3,13 +3,13 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "resourceName": {
-            "value": "gethu-ravi-aks"
+            "value": "gethuravi-aks01"
         },
         "location": {
             "value": "eastus"
         },
         "dnsPrefix": {
-            "value": "gethu-ravi-aks-dns"
+            "value": "gethuravi-aks01-dns"
         },
         "kubernetesVersion": {
             "value": "1.20.9"
@@ -40,12 +40,6 @@
         },
         "workspaceRegion": {
             "value": "East US"
-        },
-        "acrName": {
-            "value": "gethuacr"
-        },
-        "acrResourceGroup": {
-            "value": "Gethu-RG"
         }
     }
 }
