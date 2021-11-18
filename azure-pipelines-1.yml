@@ -38,17 +38,11 @@ steps:
 - powershell: |
     Write-Host "Output of the AKS Deployment is : $(aks_arm)"
     Write-Host "Output of the AKS Deployment is : $(acr_arm)"
-- task: AzureCLI@2
+- task: AzurePowerShell@5
   inputs:
-    azureSubscription: 'Azure subscription 1 (ad44404d-2ae3-4c48-8c53-40751b702244)'
-    scriptType: 'bash'
-    scriptLocation: 'inlineScript'
-    inlineScript: 'az pipelines variable-group variable create --group-id 1 --name aks-name --value $(aks_arm) --output table'
-- task: AzureCLI@2
-  inputs:
-    azureSubscription: 'Azure subscription 1 (ad44404d-2ae3-4c48-8c53-40751b702244)'
-    scriptType: 'bash'
-    scriptLocation: 'inlineScript'
-    inlineScript: 'az pipelines variable-group variable create --group-id 1 --name acr-name --value $(acr_arm) --output table'
-
+    azureSubscription: 'Visual Studio Enterprise Subscription (69f26762-afa0-46b5-8311-4fbdf35b3060)'
+    ScriptType: 'InlineScript'
+    Inline: 'az pipelines variable-group variable create --group-id 1 --name "acr-name" --value $(acr_arm) --org https://dev.azure.com/ravij2020/ --project ITOps'
+    errorActionPreference: 'continue'
+    azurePowerShellVersion: 'LatestVersion'
 
