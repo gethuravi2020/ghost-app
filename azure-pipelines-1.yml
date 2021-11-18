@@ -39,13 +39,13 @@ steps:
     Write-Host "Output of the AKS Deployment is : $(aks_arm)"
     Write-Host "Output of the AKS Deployment is : $(acr_arm)"
 
-- pwsh: $(System.DefaultWorkingDirectory)/parse_arm_deployment_output.ps1 -ArmOutputString '$(aks_arm)' -MakeOutput -ErrorAction Stop
+- pwsh: $(System.DefaultWorkingDirectory)/parse_arm_deployment_output.ps1 -ArmOutputString '${env:aks_arm}' -MakeOutput -ErrorAction Stop
 - task: AzurePowerShell@5
   inputs:
     azureSubscription: 'Visual Studio Enterprise Subscription (69f26762-afa0-46b5-8311-4fbdf35b3060)'
     ScriptType: 'InlineScript'
     Inline: 'az pipelines variable-group variable create'
-    ScriptArguments: '--group-id 1 --name "$keyname" --value "$value" --org https://dev.azure.com/ravij2020/ --project ITOps'
+    ScriptArguments: '--group-id 1 --name ${env:keyname}" --value ${env:value} --org https://dev.azure.com/ravij2020/ --project ITOps'
     errorActionPreference: 'continue'
     azurePowerShellVersion: 'LatestVersion'
 
