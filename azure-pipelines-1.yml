@@ -44,7 +44,7 @@ steps:
   inputs:
     azureSubscription: 'Visual Studio Enterprise Subscription (69f26762-afa0-46b5-8311-4fbdf35b3060)'
     ScriptType: 'InlineScript'
-    Inline: 'az pipelines variable-group variable create --group-id 1 --name $keyname --value $value --org https://dev.azure.com/ravij2020/ --project ITOps'
+    Inline: 'az pipelines variable-group variable create --group-id 1 --name "$keyname" --value "$value" --org https://dev.azure.com/ravij2020/ --project ITOps'
     errorActionPreference: 'continue'
     azurePowerShellVersion: 'LatestVersion'
 
