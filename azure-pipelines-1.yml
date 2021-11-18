@@ -38,25 +38,13 @@ steps:
 - powershell: |
     Write-Host "Output of the AKS Deployment is : $(aks_arm)"
     Write-Host "Output of the AKS Deployment is : $(acr_arm)"
-- pwsh: |
-    ## aks_arm is already a pipeline variable returned via the ARM deployment
-    ## task's deploymentOutputs attribute
-    $armOutputObj = $aks_arm | convertfrom-json
-    $armOutputObj.PSObject.Properties | ForEach-Object {
-      $aksname = $_.Name
-      $value = $_.Value.value
 
-      ## Creates a standard pipeline variable
-      Write-Output "##vso[task.setvariable variable=$aksName;]$value"
-      
-      ## Creates an output variable
-      Write-Output "##vso[task.setvariable variable=$aksName;isOutput=true]$value"
-    }
+- pwsh: $(System.DefaultWorkingDirectory)/parse_arm_deployment_output.ps1 -ArmOutputString '$(aks_arm)' -MakeOutput -ErrorAction Stop
 - task: AzurePowerShell@5
   inputs:
     azureSubscription: 'Visual Studio Enterprise Subscription (69f26762-afa0-46b5-8311-4fbdf35b3060)'
     ScriptType: 'InlineScript'
-    Inline: 'az pipelines variable-group variable create --group-id 1 --name $aksname --value $value --org https://dev.azure.com/ravij2020/ --project ITOps'
+    Inline: 'az pipelines variable-group variable create --group-id 1 --name $keyname --value $value --org https://dev.azure.com/ravij2020/ --project ITOps'
     errorActionPreference: 'continue'
     azurePowerShellVersion: 'LatestVersion'
 
