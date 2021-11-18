@@ -36,13 +36,13 @@ steps:
     deploymentMode: 'Incremental'
     deploymentOutputs: acr_arm
 - powershell: |
-    Write-Host "Output of the AKS Deployment is : $(aks_arm)"
-    Write-Host "Output of the AKS Deployment is : $(acr_arm)"
+    Write-Host "Output of the AKS Deployment is : $(aks_arm).value"
+    Write-Host "Output of the AKS Deployment is : $(acr_arm).value"
 - task: AzurePowerShell@5
   inputs:
     azureSubscription: 'Visual Studio Enterprise Subscription (69f26762-afa0-46b5-8311-4fbdf35b3060)'
     ScriptType: 'InlineScript'
-    Inline: 'az pipelines variable-group variable create --group-id 1 --name "acr-name" --value $(acr_arm) --org https://dev.azure.com/ravij2020/ --project ITOps'
+    Inline: 'az pipelines variable-group variable create --group-id 1 --name "acr-name" --value "$(acr_arm).value" --org https://dev.azure.com/ravij2020/ --project ITOps'
     errorActionPreference: 'continue'
     azurePowerShellVersion: 'LatestVersion'
 
