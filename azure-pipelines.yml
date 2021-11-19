@@ -10,7 +10,7 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'd40ce67b-f23e-40cd-8708-8d1f549ae86d'
+  dockerRegistryServiceConnection: 'gethuraviacrdemo'
   imageRepository: 'gethuravighostapp'
   containerRegistry: 'gethuraviacrdemo.azurecr.io'
   dockerfilePath: '**/Dockerfile'
