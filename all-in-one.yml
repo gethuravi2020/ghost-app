@@ -55,7 +55,7 @@ spec:
           claimName: ghost-claim
       containers:
       - name: ghost
-        image: gethuacrghost.azurecr.io/gethuravighostapp:latest
+        image: gethuraviacrdemo.azurecr.io/gethuravighostapp:latest
         imagePullPolicy: Always
         env:
         - name: url
