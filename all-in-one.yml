@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: ghost
+  name: default
 ---
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
@@ -23,7 +23,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: ghost-claim
-  namespace: ghost
+  namespace: default
 spec:
   accessModes:
     - ReadWriteMany
@@ -36,7 +36,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ghost
-  namespace: ghost
+  namespace: default
   labels:
     app: ghost 
 spec:
@@ -80,7 +80,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ghost
-  namespace: ghost
+  namespace: default
 spec:
   type: LoadBalancer
   selector:
@@ -94,7 +94,7 @@ kind: Ingress
 apiVersion: networking.k8s.io/v1
 metadata:
   name: ingress-ghost
-  namespace: ghost
+  namespace: default
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/backend-protocol: HTTP
