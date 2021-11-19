@@ -12,10 +12,9 @@ variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: 'd40ce67b-f23e-40cd-8708-8d1f549ae86d'
   imageRepository: 'gethuravighostapp'
-  containerRegistry: 'gethuacrghost.azurecr.io'
+  containerRegistry: 'gethuraviacrdemo.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
-
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
