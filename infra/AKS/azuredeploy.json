@@ -253,7 +253,7 @@
     "outputs": {
         "AKS-NAME": {
             "type": "string",
-            "value": "[reference(concat('Microsoft.ContainerService/managedClusters/', parameters('resourceName'))).resourceName]"
+            "value": "[reference(concat('Microsoft.ContainerService/managedClusters/', parameters('resourceName'))).dnsPrefix]"
         }
     }
 }
