@@ -38,7 +38,7 @@ steps:
 - powershell: |
     Write-Host "Output of the AKS Deployment is : $(aks_arm.akS-NAME.value)"
     Write-Host "Output of the AKS Deployment is : $(acr_arm.acrLoginServer.loginServer)"
-    ${env:AZURE_DEVOPS_EXT_PAT} = "jiliqrniv5wfknnouby3i5fwforivczlnnxjvffajlr2gkxhl7pa"
+    ${env:AZURE_DEVOPS_EXT_PAT} = "7esljedmbvhxnoexaftlfpitq5m6726tg26z36fn5q3aztqc6wja"
     az pipelines variable-group variable update --group-id 4 --name "aksname" --value $(aks_arm.akS-NAME.value) --org https://dev.azure.com/ravij2020/ --project ITOps
 
 #- pwsh: $(System.DefaultWorkingDirectory)/parse_arm_deployment_output.ps1 -ArmOutputString '${env:aks_arm}' -MakeOutput -ErrorAction Stop
