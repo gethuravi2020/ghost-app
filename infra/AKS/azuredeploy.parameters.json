@@ -9,7 +9,7 @@
             "value": "eastus"
         },
         "dnsPrefix": {
-            "value": "gethuravi-aks01-dns"
+            "value": "gethuravi-aks01"
         },
         "kubernetesVersion": {
             "value": "1.20.9"
