@@ -10,17 +10,4 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: DockerCompose@0
-  inputs:
-    containerregistrytype: 'Azure Container Registry'
-    azureSubscription: 'Visual Studio Enterprise Subscription (69f26762-afa0-46b5-8311-4fbdf35b3060)'
-    azureContainerRegistry: '{"loginServer":"gethuraviacrdemo.azurecr.io", "id" : "/subscriptions/69f26762-afa0-46b5-8311-4fbdf35b3060/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/gethuraviacrdemo"}'
-    dockerComposeFile: '**/docker-compose.yml'
-    action: 'Build services'
-- task: DockerCompose@0
-  inputs:
-    containerregistrytype: 'Azure Container Registry'
-    azureSubscription: 'Visual Studio Enterprise Subscription (69f26762-afa0-46b5-8311-4fbdf35b3060)'
-    azureContainerRegistry: '{"loginServer":"gethuraviacrdemo.azurecr.io", "id" : "/subscriptions/69f26762-afa0-46b5-8311-4fbdf35b3060/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/gethuraviacrdemo"}'
-    dockerComposeFile: '**/docker-compose.yml'
-    action: 'Push services'
+
