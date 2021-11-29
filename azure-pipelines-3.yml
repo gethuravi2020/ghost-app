@@ -19,7 +19,8 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      Docker pull ghost
+      docker --version
+      docker pull ghost
       az acr login --name gethuraviacrdemo01
       docker tag ghost:latest gethuraviacrdemo01.azurecr.io/ghost:latest
       docker push gethuraviacrdemo01.azurecr.io/ghost:latest
