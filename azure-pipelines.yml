@@ -10,9 +10,9 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'gethuraviacrdemo'
+  dockerRegistryServiceConnection: 'gethuraviacrdemo01'
   imageRepository: 'gethuravighostapp'
-  containerRegistry: 'gethuraviacrdemo.azurecr.io'
+  containerRegistry: 'gethuraviacrdemo01.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
   # Agent VM image name
